@@ -24,6 +24,14 @@ class DoublyLinkedList():
         removed_node = self.first_node
         self.first_node = self.first_node.next_node
         return removed_node
+    
+    def printAllReverse(self):
+        current_node = self.last_node
+
+        while current_node:
+            print(current_node.data)
+
+            current_node = self.last_node.prev_node
 
 class Queue():
     def __init__(self,data):

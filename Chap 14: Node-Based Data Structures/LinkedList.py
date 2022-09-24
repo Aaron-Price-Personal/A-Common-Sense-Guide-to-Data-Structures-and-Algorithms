@@ -80,5 +80,59 @@ class LinkedList():
         # Change link of current node to point to node after one we want delted
         current_node.next_node = node_after_deleted
 
+    def print_all(self):
+        current_node = self.first_node
 
+        while current_node:
+            print(current_node.data)
+            current_node = current_node.next_node
     
+    def get_last(self):
+        current_node = self.first_node
+
+        while current_node:
+            if current_node.next_node == None:
+                return current_node.data
+            current_node = current_node.next_node
+        return None
+    
+    def reverse_list(self):
+        prev_node = None
+        current_node = self.first_node
+
+        while current_node:
+            next_node = current_node.next_node
+
+            current_node.next_node = prev_node
+
+            prev_node = current_node
+            current_node = next_node
+        
+        self.first_node = prev_node
+    
+    def delete_mid_node(self,node):
+        node.data = node.next_node.data
+        node.next_node = node.next_node.next_node
+
+
+'''
+Code below allows to try out data structure
+
+node_1 = Node("a")
+node_2 = Node("b")
+node_3 = Node("c")
+node_4 = Node("d")
+
+node_1.next_node = node_2
+node_2.next_node = node_3
+node_3.next_node = node_4
+
+linked_list = LinkedList(node_1)
+
+print(linked_list.read(3))
+print(linked_list.search("a"))
+linked_list.print_all()
+print(linked_list.get_last())
+linked_list.reverse_list()
+linked_list.print_all()
+'''

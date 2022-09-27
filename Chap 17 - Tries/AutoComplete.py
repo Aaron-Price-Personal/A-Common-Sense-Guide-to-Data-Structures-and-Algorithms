@@ -38,3 +38,21 @@ class Trie():
         currentNode.children["*"] = None
         
         return currentNode
+    
+    def collectAllWords(self,node = None, word = "", words=[]):
+        current_node = node or self.root
+
+        for key, childNode in current_node.children.items():
+            # If key = * then we have hit end of word
+            if key == "*":
+                words.append(word)
+            else:
+                self.collectAllWords(childNode, word + key, words)
+        
+        return words
+    
+    def autocomplete(self, prefix):
+        currentNode = self.search(prefix)
+        if not currentNode:
+            return None
+        return self.collectAllWords(currentNode)

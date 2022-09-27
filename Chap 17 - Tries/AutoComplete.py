@@ -87,6 +87,3 @@ class Trie():
         
         # If the user's word is found in the trie
         return word
-
-
-
